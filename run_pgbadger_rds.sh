@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/.bash_profile
 # script to generate pgbadger reports
-#Arguments = -i aws-instance-name -r aws-regipn-name  -c cron_or_not -v
+#Arguments = -i aws-instance-name -r aws-region-name  -c cron_or_not -v
 usage()
 {
 cat << EOF
