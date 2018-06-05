@@ -74,11 +74,11 @@ download_and_run_fun() {
 rm -f $PGBADGER_HOME/$AWS_INSTANCE/postgresql.log.$1
 
  #describe and downlowd log files for yesterday
-for filename  in $( rds-describe-db-log-files $AWS_INSTANCE --region $AWS_REGION |awk {'print $2'}|grep $1)
+for filename  in $( aws rds describe-db-log-files $AWS_INSTANCE --region $AWS_REGION |awk {'print $2'}|grep $1)
 do
 
  echo $filename
- rds-download-db-logfile $AWS_INSTANCE --region $AWS_REGION --log-file-name $filename >> $PGBADGER_HOME/$AWS_INSTANCE/postgresql.log.$1
+ aws rds download-db-log-file-portion $AWS_INSTANCE --region $AWS_REGION --log-file-name $filename >> $PGBADGER_HOME/$AWS_INSTANCE/postgresql.log.$1
 done
 
 # run pgbadger report
