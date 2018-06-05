@@ -78,7 +78,7 @@ for filename  in $( aws rds describe-db-log-files $AWS_INSTANCE --region $AWS_RE
 do
 
  echo $filename
- aws rds download-db-log-file-portion $AWS_INSTANCE --region $AWS_REGION --log-file-name $filename >> $PGBADGER_HOME/$AWS_INSTANCE/postgresql.log.$1
+ aws rds download-db-log-files $AWS_INSTANCE --region $AWS_REGION --log-file-name $filename >> $PGBADGER_HOME/$AWS_INSTANCE/postgresql.log.$1
 done
 
 # run pgbadger report
